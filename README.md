@@ -9,6 +9,7 @@ waits until 5pm arrives and then toots a reminder that it's time for drinks ther
 ### To install
 
 - pip install Mastodon.py
+- Create secrets/secrets.txt (see secrets/README_secrets)
 - Use cron to run clocktails.py every hour a few minutes before the hour and half hour.
 
 I use:
