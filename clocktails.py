@@ -59,7 +59,7 @@ def convert2google( ll ):
     v2 += float(g[4])/60.0
   if g[5]:
     v2 += float(g[5])/3600.0
-  result = "@%f,%f" % (v1,v2)
+  result = "%f,%f" % (v1,v2)
   # print "converted %s to %s\n" % (ll,result)
   return result
 
@@ -138,7 +138,7 @@ city = string.replace(city, '_', ' ')
 
 # Build a maps query to local bars
 #
-url = "https://www.google.com/maps/search/%s/%s/" % (urllib.quote('bars near %s' % city),convert2google(longlat[random_zone]))
+url = "https://www.google.com/maps/search/%s/@%s,9z/" % (urllib.quote('bars near %s' % city),convert2google(longlat[random_zone]))
 
 toot = "It is 5 p.m. in %s!\nTime for a cocktail!\n%s" % (city, url)
 
