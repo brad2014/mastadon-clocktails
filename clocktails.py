@@ -98,6 +98,7 @@ if not os.path.isfile(zone_tab):
   sys.exit(0)
 
 now = time.time()
+stamp = time.strftime('%Y%m%d%H%M%SZ', time.gmtime(now))
 waitmap = {}
 longlat = {}
 with open( zone_tab ) as f:
@@ -144,10 +145,10 @@ toot = "It is 5 p.m. in %s!\nTime for a cocktail!\n%s" % (city, url)
 
 limit = 30 # minutes
 if min_wait > limit*60:
-  print "No cocktails in the next %s minutes.  Try again later." % limit
+  print "%s: No cocktails in the next %s minutes.  Try again later." % (stamp,limit)
   sys.exit(0)
 
-print "Waiting %d'%d\" to post:\n%s" % (min_wait/60, min_wait%60, toot)
+print "%s: Waiting %d'%d\" to post:\n%s" % (stamp, min_wait/60, min_wait%60, toot)
 time.sleep(min_wait)
 mastodon = Mastodon(
   client_id = 'secrets/clientcred.txt',
